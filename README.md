@@ -13,4 +13,22 @@ Local compilation:
 * Done on OSX - Catalina
 * Using `clang++` provided by XCode
 * Build the final repo with `CMake`
-* 
+
+
+**For running the scripts:** On OSX, if XCode is present, the path to the proper SDK should be used as a `CPPFLAG`. Setting the path to the SDK is done with:
+
+```bash
+export CPPFLAGS="-isysroot/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/"
+```
+
+And then just add the flag into the compilation command
+
+```bash
+/path/to/c++/compiler $CPPFLAG main.cc #optional -std=c++14 if required
+```
+
+With extra flag for C++14 standard:
+
+```bash
+export CPPFLAGS="-isysroot/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/ -std=c++14"
+```

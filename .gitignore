@@ -1,2 +1,4 @@
 build/*
 tarball/*
+*.out
+*.dat
