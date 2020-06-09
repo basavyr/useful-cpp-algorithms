@@ -32,3 +32,9 @@ With extra flag for C++14 standard:
 ```bash
 export CPPFLAGS="-isysroot/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/ -std=c++14"
 ```
+
+
+## Asynchronous project
+
+This project is based on some sources and documentation that was already used in another [GitHub Project](https://github.com/basavyr/asyncCPP_Darwin).
+* It contains some useful explanations on `moving` the tasks in a container, for example. [here](https://github.com/basavyr/asyncCPP_Darwin/blob/master/sources/AsyncfunctionsC++.md).
