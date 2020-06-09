@@ -4,7 +4,7 @@ set(project_name "Useful-CPP-Algorithms")
 
 project(project_name)
 
-SET(CMAKE_CXX_STANDARD 14)
+SET(CMAKE_CXX_STANDARD 17)
 SET(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
 SET(CMAKE_MACOSX_RPATH 1) 
