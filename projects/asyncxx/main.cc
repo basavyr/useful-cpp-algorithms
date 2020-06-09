@@ -64,7 +64,7 @@ void async_generation(const int arr_size)
         // futures.emplace_back(std::move(task_id)); //works
         futures.emplace_back(std::async(std::launch::async, async::asyncxx::generateVector, arr_size)); //this works since the async function is passed to the array as soon as it finishes
     }
-    for(auto &&e:futures)
+    for (auto &&e : futures)
     {
         e.get();
     }
@@ -73,12 +73,46 @@ void async_generation(const int arr_size)
     std::cout << "T_async= " << duration_s << " s\n";
 }
 
+static void future_generator(std::vector<std::future<int>> &future_v, int n, int (*function)(int), int arg)
+{
+    for (int id = 0; id < n; ++id)
+    {
+        auto task = std::async(std::launch::async, function, arg);
+        future_v.emplace_back(std::move(task));
+    }
+}
+
+//add some math functions for testing purposes
+int math_fct1(int arg)
+{
+    return std::forward<int>(arg * 2);
+}
+
+int math_fct2(int arg)
+{
+    return std::forward<int>(arg - 1);
+}
+
+template <typename T>
+inline size_t check_size(std::vector<T> &v)
+{
+    return v.size();
+}
+
 int main()
 {
     // do_async_test();
 
     //for this particular size, the process of generating an array with randoms is around one second.
     const int size = 6000000;
-    sync_generation(size);
-    async_generation(size);
+    // sync_generation(size);
+    // async_generation(size);
+    std::vector<std::future<int>> futures;
+    std::cout << check_size<std::future<int>>(futures) << "\n";
+    future_generator(futures, 100, math_fct1, 2);
+    std::cout << check_size<std::future<int>>(futures) << "\n";
+
+    //don't show the array of future
+    // for (auto &&n : futures)
+    //     std::cout << n.get() << "\n";
 }

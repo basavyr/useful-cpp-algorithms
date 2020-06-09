@@ -29,3 +29,17 @@ std::string async::asyncxx::fetchDataFromFile(const std::string &file_data)
               << "\n";
     return "Fetched file +" + file_data;
 }
+
+std::vector<int> async::asyncxx::generateVector(const int n)
+{
+    std::vector<int> int_vector;
+    std::random_device rd;
+    std::mt19937 twister{rd()};
+    std::uniform_int_distribution<int> int_dist(0, n);
+
+    for (auto id = 0; id < n; ++id)
+    {
+        int_vector.emplace_back(int_dist(twister));
+    }
+    return int_vector;
+}
