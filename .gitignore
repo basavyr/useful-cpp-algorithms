@@ -2,3 +2,5 @@ build/*
 tarball/*
 *.out
 *.dat
+*.plist
+main.dSYM
